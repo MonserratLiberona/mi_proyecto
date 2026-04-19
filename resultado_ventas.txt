@@ -1,0 +1,26 @@
+# Archivo de texto en modo escritura
+with open("resultado_ventas.txt", "w") as archivo:
+
+    archivo.write("Lista de ventas original:\n")
+    for venta in ventas:
+        archivo.write(f"Fecha: {venta['fecha']}, Producto: {venta['producto']}, Cantidad: {venta['cantidad']}, Precio: {venta['precio']}\n")
+
+    archivo.write("\nIngresos Totales: " + str(ingresos_totales) + "\n")
+
+    archivo.write("\nProducto más vendido: " + producto_mas_vendido + "\n")
+    archivo.write("Cantidad total vendida: " + str(ventas_por_producto[producto_mas_vendido]) + "\n")
+
+    archivo.write("\nPrecio promedio por producto:\n")
+    for producto, (suma_precios, total_cant) in precios_por_producto.items():
+        promedio = suma_precios / total_cant
+        archivo.write(f"{producto} : {int(promedio)}\n")
+
+    archivo.write("\nIngresos por día:\n")
+    for fecha, ingreso in ingresos_por_dia.items():
+        archivo.write(f"{fecha} : {ingreso}\n")
+
+    archivo.write("\nResumen de ventas por producto:\n")
+    for producto, info in resumen_ventas.items():
+        archivo.write(f"{producto} : {info}\n")
+
+print("Resultados guardados en 'resultado_ventas.txt'")
